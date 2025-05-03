@@ -1,35 +1,36 @@
-import useRegister from "../hooks/useRegister";
-import FormUi from "../ui/AuthUi/FormUi";
-import LogHeader from "../ui/AuthUi/LogHeader";
+import Form from "../ui/Form/Form";
+import RedirectBtn from "../ui/RedirectBtn";
 
 export default function Register() {
-  const {
-    form,
-    handleChange,
-    handleRegister,
-    rememberMe,
-    setRememberMe,
-    error,
-    loading,
-  } = useRegister();
-
   return (
-    <div className="h-screen w-full">
-      <div className="flex flex-col justify-center items-center py-20">
-        <LogHeader type="register" />
+    <div className="bg-accent min-h-screen flex justify-center items-center p-4">
+      <div className="w-full max-w-md bg-white p-4 shadow-2xl overflow-hidden">
+        <div className="px-8 pt-8 pb-6 text-center">
+          {/* login head */}
+          <h2 className="text-3xl font-semibold text-gray-800">
+            Create a new account
+          </h2>
+          <p className="mt-2 text-sm text-gray-500">
+            Please fill in the form below
+          </p>
+        </div>
 
-        {/* form */}
-        <div className="w-full max-w-md bg-card px-4 md:px-8 shadow-xl rounded-sm space-y-4 py-8">
-          <FormUi
-            type="register"
-            formData={form}
-            rememberMe={rememberMe}
-            onFormChange={handleChange}
-            onRememberMeChange={(value) => setRememberMe(value)}
-            onSubmit={handleRegister}
-            error={error}
-            loading={loading}
-          />
+        <div className="px-8 pb-8">
+          {/* form body */}
+          <Form type="register" />
+
+          <div className="relative my-6 items-center flex justify-center">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm items-center">
+              <span className="px-2 bg-white text-gray-500">or</span>
+            </div>
+          </div>
+          {/* redirect button */}
+          <div className="mt-4">
+            <RedirectBtn type="register" />
+          </div>
         </div>
       </div>
     </div>
