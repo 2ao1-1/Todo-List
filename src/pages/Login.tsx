@@ -1,35 +1,30 @@
-import useLogin from "../hooks/useLogin";
-import FormUi from "../ui/AuthUi/FormUi";
-import LogHeader from "../ui/AuthUi/LogHeader";
+import RedirectBtn from "../ui/RedirectBtn";
+import Form from "../ui/Form/Form";
 
 export default function Login() {
-  const {
-    form,
-    handleChange,
-    handleLogin,
-    rememberMe,
-    setRememberMe,
-    error,
-    loading,
-  } = useLogin();
-
   return (
-    <div className="h-screen w-full">
-      <div className="flex flex-col justify-center items-center py-20">
-        <LogHeader type="login" />
+    <div className="bg-accent min-h-screen flex justify-center items-center p-4">
+      <div className="w-full max-w-md bg-white p-4 shadow-2xl overflow-hidden">
+        <div className="px-8 pt-8 pb-6 text-center">
+          <h1 className="text-3xl font-bold text-gray-800">Welcome Back</h1>
+          <p className="mt-2 text-gray-600">Sign in to access your account</p>
+        </div>
+        <div className="px-8 pb-8">
+          {/* form body */}
+          <Form type="signin" />
 
-        {/* form */}
-        <div className="w-full max-w-md bg-card px-4 md:px-8 shadow-xl rounded-sm space-y-4 py-8">
-          <FormUi
-            type="login"
-            formData={form}
-            rememberMe={rememberMe}
-            onFormChange={handleChange}
-            onRememberMeChange={(value) => setRememberMe(value)}
-            onSubmit={handleLogin}
-            error={error}
-            loading={loading}
-          />
+          <div className="relative my-6 items-center flex justify-center">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-gray-500">or</span>
+            </div>
+          </div>
+          {/* redirect button */}
+          <div className="mt-4">
+            <RedirectBtn type="signin" />
+          </div>
         </div>
       </div>
     </div>
