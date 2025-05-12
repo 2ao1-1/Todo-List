@@ -7,7 +7,7 @@ import {
 } from "../pages/Auth/types/AuthTypes";
 import { getToken, removeToken, setToken } from "../utils/helper";
 
-const API_URL = "http://144.91.75.57:5012/api/auth";
+const API_URL = import.meta.env.AUTH_API_URL;
 
 function handleError(err: unknown): never {
   if (axios.isAxiosError(err)) {
