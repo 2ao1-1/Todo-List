@@ -4,7 +4,7 @@ import {
   RegisterRequest,
   AuthResponse,
   UserProfile,
-} from "../types/AuthTypes";
+} from "../pages/Auth/types/AuthTypes";
 import { getToken, removeToken, setToken } from "../utils/helper";
 
 const API_URL = "http://144.91.75.57:5012/api/auth";
@@ -64,6 +64,6 @@ export const getUserProfile = async (): Promise<UserProfile> => {
   }
 };
 
-export const logoutUser = () => {
+export const logoutUser = (): void => {
   removeToken();
 };

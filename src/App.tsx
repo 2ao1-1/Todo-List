@@ -10,13 +10,16 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
+import NotFound from "./pages/NotFound";
 
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./pages/Auth/context/AuthContext";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
 
-import AppLayout from "./pages/AppLayout";
-import TodosView from "./pages/TodosView";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import AppLayout from "./pages/Layout/AppLayout";
+
+import TodoDetail from "./pages/Show/TodoDetail";
+import CreateNewTodo from "./pages/Create/CreateNewTodo";
 
 const handleError = (error: unknown) => {
   if (error instanceof Error) {
@@ -36,8 +39,8 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: 1,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
+      // refetchOnWindowFocus: false,
+      // refetchOnReconnect: true,
       staleTime: 0,
       // cacheTime: 600000,
     },
@@ -55,9 +58,8 @@ export default function App() {
 
             {/* app view */}
             <Route path="/app" element={<AppLayout />}>
-              <Route index element={<TodosView />} />
-              <Route path="new" element={<p>new todo</p>} />
-              <Route path=":todoId" element={<p>#id todo</p>} />
+              <Route path="newTodo" element={<CreateNewTodo />} />
+              <Route path=":todoId" element={<TodoDetail />} />
             </Route>
 
             {/* authentication */}
@@ -65,7 +67,7 @@ export default function App() {
             <Route path="/register" element={<Register />} />
 
             {/* 404 page */}
-            <Route path="*" element={<p>404 page not found</p>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
 
@@ -80,8 +82,8 @@ export default function App() {
               fontSize: "16px",
               maxWidth: "500px",
               padding: "16px 24px",
-              backgroundColor: "var(--color-grey-0)",
-              color: "var(--color-grey-700)",
+              backgroundColor: "#fff",
+              color: "#1a1a1a",
             },
           }}
         />

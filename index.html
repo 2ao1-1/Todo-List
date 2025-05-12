@@ -10,3 +10,626 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
+<!-- <!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اختبار رفع الصور مع التودو - نسخة محسنة</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .result {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      .hidden {
+        display: none;
+      }
+      .image-preview {
+        max-width: 300px;
+        max-height: 300px;
+        margin-top: 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .image-preview-container {
+        text-align: center;
+      }
+      .response {
+        max-height: 300px;
+        overflow-y: auto;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: monospace;
+        direction: ltr;
+        text-align: left;
+        word-break: break-all;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.2s;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      input[type="text"],
+      input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .tasks-container {
+        margin-top: 10px;
+      }
+      .task-item {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      .task-item input[type="text"] {
+        flex-grow: 1;
+        margin-left: 10px;
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .remove-btn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+      .add-btn {
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-bottom: 15px;
+      }
+      .token-input {
+        margin-bottom: 15px;
+      }
+      .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border-left-color: #09f;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+        display: none;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .debug-section {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ffcc00;
+        border-radius: 5px;
+        background-color: #fffbea;
+      }
+      .debug-content {
+        font-family: monospace;
+        white-space: pre-wrap;
+        direction: ltr;
+        text-align: left;
+      }
+      .error {
+        color: #d32f2f;
+        background-color: #ffebee;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+      .success {
+        color: #388e3c;
+        background-color: #e8f5e9;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+      .tab-container {
+        display: flex;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab {
+        padding: 8px 15px;
+        cursor: pointer;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        border-radius: 4px 4px 0 0;
+        margin-right: 5px;
+      }
+      .tab.active {
+        background: white;
+        border-bottom-color: white;
+        font-weight: bold;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>اختبار إضافة تودو مع صورة</h1>
+
+      <div class="tab-container">
+        <div class="tab active" data-tab="main">الواجهة الرئيسية</div>
+        <div class="tab" data-tab="settings">إعدادات متقدمة</div>
+        <div class="tab" data-tab="debug">معلومات التصحيح</div>
+      </div>
+
+      <div id="mainTab" class="tab-content active">
+        <p>اختبر إضافة تودو جديدة مع صورة باستخدام واجهة API</p>
+
+        <div class="form-group token-input">
+          <label for="tokenInput">رمز JWT:</label>
+          <input
+            type="text"
+            id="tokenInput"
+            placeholder="أدخل رمز JWT الخاص بك هنا"
+            value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzQ2MzAyNDM0LCJleHAiOjE3NDg4OTQ0MzR9.aBVXIbTLJmrwWgjvkMvDifmFeAM2beJz6098cvoCNNM"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="titleInput">عنوان التودو:</label>
+          <input
+            type="text"
+            id="titleInput"
+            placeholder="أدخل عنوان التودو"
+            value="تودو جديدة مع صورة"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="iconInput">أيقونة (اختياري):</label>
+          <input type="text" id="iconInput" placeholder="مثال: 📝" value="📝" />
+        </div>
+
+        <div class="form-group">
+          <label for="imageInput">اختر صورة:</label>
+          <input type="file" id="imageInput" accept="image/*" />
+        </div>
+
+        <div class="form-group">
+          <label>المهام:</label>
+          <button type="button" id="addTaskBtn" class="add-btn">
+            إضافة مهمة
+          </button>
+          <div id="tasksContainer" class="tasks-container">
+            <div class="task-item">
+              <input
+                type="text"
+                class="task-input"
+                placeholder="أدخل نص المهمة"
+                value="مهمة جديدة"
+              />
+              <button type="button" class="remove-btn">حذف</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="uploadButton">إنشاء تودو مع صورة</button>
+        </div>
+
+        <div id="statusMessage" class="hidden"></div>
+        <div id="spinner" class="spinner"></div>
+
+        <div id="result" class="result hidden">
+          <h2>النتيجة</h2>
+          <div>
+            <h3>بيانات الاستجابة:</h3>
+            <div id="responseData" class="response"></div>
+          </div>
+
+          <div class="image-preview-container">
+            <h3>معاينة الصورة:</h3>
+            <img
+              id="imagePreview"
+              class="image-preview hidden"
+              src=""
+              alt="معاينة الصورة المرفوعة"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="settingsTab" class="tab-content">
+        <h2>إعدادات متقدمة</h2>
+
+        <div class="form-group">
+          <label for="apiUrlInput">عنوان API:</label>
+          <input
+            type="text"
+            id="apiUrlInput"
+            value="http://144.91.75.57:5012/api/todos"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="maxImageSize"
+            >الحد الأقصى لحجم الصورة (بالكيلوبايت):</label
+          >
+          <input type="number" id="maxImageSize" value="5120" min="100" />
+        </div>
+
+        <div class="form-group">
+          <label for="timeoutSetting">مهلة الانتظار (بالثواني):</label>
+          <input
+            type="number"
+            id="timeoutSetting"
+            value="30"
+            min="5"
+            max="120"
+          />
+        </div>
+      </div>
+
+      <div id="debugTab" class="tab-content">
+        <h2>معلومات التصحيح</h2>
+        <div class="debug-section">
+          <h3>بيانات الطلب:</h3>
+          <div id="requestDebug" class="debug-content">
+            لم يتم إرسال أي طلب بعد.
+          </div>
+        </div>
+
+        <div class="debug-section">
+          <h3>استجابة الخادم الكاملة:</h3>
+          <div id="responseDebug" class="debug-content">
+            لا توجد استجابة بعد.
+          </div>
+        </div>
+
+        <div class="debug-section">
+          <h3>معلومات الخطأ:</h3>
+          <div id="errorDebug" class="debug-content">لا توجد أخطاء مسجلة.</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // تبديل التبويبات
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // إزالة الفئة النشطة من كل التبويبات
+          document
+            .querySelectorAll(".tab")
+            .forEach((t) => t.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((t) => t.classList.remove("active"));
+
+          // إضافة الفئة النشطة للتبويب المحدد
+          tab.classList.add("active");
+          document
+            .getElementById(tab.getAttribute("data-tab") + "Tab")
+            .classList.add("active");
+        });
+      });
+
+      // إضافة وحذف المهام
+      document.getElementById("addTaskBtn").addEventListener("click", () => {
+        const tasksContainer = document.getElementById("tasksContainer");
+        const taskDiv = document.createElement("div");
+        taskDiv.className = "task-item";
+        taskDiv.innerHTML = `
+          <input type="text" class="task-input" placeholder="أدخل نص المهمة" />
+          <button type="button" class="remove-btn">حذف</button>
+        `;
+        tasksContainer.appendChild(taskDiv);
+
+        // إضافة حدث للزر الجديد
+        taskDiv
+          .querySelector(".remove-btn")
+          .addEventListener("click", function () {
+            tasksContainer.removeChild(taskDiv);
+          });
+      });
+
+      // إضافة حدث لأزرار الحذف الموجودة
+      document.querySelectorAll(".remove-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const taskItem = this.parentElement;
+          taskItem.parentElement.removeChild(taskItem);
+        });
+      });
+
+      // عرض رسالة الحالة
+      function showStatus(message, type) {
+        const statusDiv = document.getElementById("statusMessage");
+        statusDiv.className = type;
+        statusDiv.textContent = message;
+        statusDiv.classList.remove("hidden");
+
+        // إخفاء الرسالة بعد 5 ثوانٍ
+        setTimeout(() => {
+          statusDiv.classList.add("hidden");
+        }, 5000);
+      }
+
+      // التحقق من حجم الصورة
+      function checkImageSize(file) {
+        const maxSize = document.getElementById("maxImageSize").value * 1024; // تحويل إلى بايت
+        if (file.size > maxSize) {
+          return false;
+        }
+        return true;
+      }
+
+      // تحضير البيانات للتصحيح
+      function prepareDebugData(formData) {
+        const debugData = {};
+        for (let pair of formData.entries()) {
+          // تحويل البيانات الثنائية إلى "[Binary Data]" للعرض
+          if (pair[1] instanceof File) {
+            debugData[pair[0]] = {
+              filename: pair[1].name,
+              type: pair[1].type,
+              size: pair[1].size + " bytes",
+            };
+          } else {
+            debugData[pair[0]] = pair[1];
+          }
+        }
+        return debugData;
+      }
+
+      // رفع التودو مع الصورة
+      document
+        .getElementById("uploadButton")
+        .addEventListener("click", async () => {
+          const fileInput = document.getElementById("imageInput");
+          const titleInput = document.getElementById("titleInput");
+          const iconInput = document.getElementById("iconInput");
+          const tokenInput = document.getElementById("tokenInput");
+          const apiUrlInput = document.getElementById("apiUrlInput");
+          const resultDiv = document.getElementById("result");
+          const responseDataDiv = document.getElementById("responseData");
+          const imagePreview = document.getElementById("imagePreview");
+          const spinner = document.getElementById("spinner");
+          const requestDebug = document.getElementById("requestDebug");
+          const responseDebug = document.getElementById("responseDebug");
+          const errorDebug = document.getElementById("errorDebug");
+          const timeoutValue =
+            document.getElementById("timeoutSetting").value * 1000;
+
+          // إعادة تعيين أقسام التصحيح
+          requestDebug.textContent = "جاري تحضير الطلب...";
+          responseDebug.textContent = "في انتظار الاستجابة...";
+          errorDebug.textContent = "لا توجد أخطاء حتى الآن.";
+
+          // تجميع المهام
+          const tasks = [];
+          document.querySelectorAll(".task-input").forEach((input) => {
+            if (input.value.trim()) {
+              tasks.push({
+                text: input.value.trim(),
+                completed: false,
+              });
+            }
+          });
+
+          // التحقق من وجود عنوان
+          if (!titleInput.value.trim()) {
+            showStatus("يرجى إدخال عنوان للتودو", "error");
+            return;
+          }
+
+          // التحقق من وجود رمز JWT
+          const token = tokenInput.value.trim();
+          if (!token) {
+            showStatus("يرجى إدخال رمز JWT صالح", "error");
+            return;
+          }
+
+          // التحقق من حجم الصورة إذا تم اختيارها
+          if (fileInput.files.length) {
+            if (!checkImageSize(fileInput.files[0])) {
+              showStatus(
+                `حجم الصورة كبير جدًا. الحد الأقصى هو ${document.getElementById("maxImageSize").value} كيلوبايت`,
+                "error"
+              );
+              return;
+            }
+          }
+
+          // إعداد البيانات للإرسال
+          const formData = new FormData();
+          formData.append("title", titleInput.value.trim());
+
+          // إضافة الأيقونة فقط إذا تم إدخالها
+          if (iconInput.value.trim()) {
+            formData.append("icon", iconInput.value.trim());
+          }
+
+          // إضافة الصورة إذا تم اختيارها
+          if (fileInput.files.length) {
+            formData.append("image", fileInput.files[0]);
+          }
+
+          // إضافة المهام كسلسلة JSON
+          if (tasks.length > 0) {
+            formData.append("tasks", JSON.stringify(tasks));
+          }
+
+          // تحضير بيانات التصحيح
+          const debugData = prepareDebugData(formData);
+          requestDebug.textContent = JSON.stringify(
+            {
+              url: apiUrlInput.value,
+              method: "POST",
+              headers: { Authorization: `Bearer ${token}` },
+              body: debugData,
+            },
+            null,
+            2
+          );
+
+          try {
+            // إظهار حالة التحميل
+            spinner.style.display = "block";
+            resultDiv.classList.add("hidden");
+            imagePreview.classList.add("hidden");
+            showStatus("جاري إرسال الطلب...", "info");
+
+            // إنشاء وحدة تحكم بالمهلة
+            const controller = new AbortController();
+            const timeoutId = setTimeout(
+              () => controller.abort(),
+              timeoutValue
+            );
+
+            // إرسال الطلب
+            const response = await fetch(apiUrlInput.value, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              body: formData,
+              signal: controller.signal,
+            }).catch((error) => {
+              if (error.name === "AbortError") {
+                throw new Error(
+                  "انتهت مهلة الطلب. تأكد من أن الخادم يعمل وحاول مرة أخرى."
+                );
+              }
+              throw error;
+            });
+
+            // إلغاء المهلة في حالة الاستجابة
+            clearTimeout(timeoutId);
+
+            // عرض كود الاستجابة في التصحيح
+            responseDebug.textContent = `Status Code: ${response.status} ${response.statusText}\n`;
+
+            // محاولة الحصول على البيانات بتنسيق JSON
+            let data;
+            let responseText;
+
+            try {
+              responseText = await response.text();
+              responseDebug.textContent += responseText;
+
+              try {
+                data = JSON.parse(responseText);
+              } catch (parseError) {
+                errorDebug.textContent = `خطأ تحليل JSON: ${parseError.message}\nالاستجابة الأصلية: ${responseText}`;
+                throw new Error("فشل في تحليل استجابة JSON من الخادم");
+              }
+            } catch (textError) {
+              errorDebug.textContent = `خطأ في قراءة الاستجابة: ${textError.message}`;
+              throw new Error("فشل في قراءة استجابة الخادم");
+            }
+
+            // إخفاء المؤشر الدوار وإظهار النتيجة
+            spinner.style.display = "none";
+            resultDiv.classList.remove("hidden");
+
+            // عرض البيانات المستلمة
+            responseDataDiv.textContent = JSON.stringify(data, null, 2);
+
+            // عرض الصورة إذا كانت موجودة
+            if (data && data.imageUrl) {
+              imagePreview.src = data.imageUrl;
+              imagePreview.classList.remove("hidden");
+            } else {
+              imagePreview.classList.add("hidden");
+            }
+
+            // التعامل مع الخطأ في الاستجابة
+            if (!response.ok) {
+              showStatus(
+                `خطأ في الاستجابة: ${response.status} ${response.statusText}`,
+                "error"
+              );
+            } else {
+              showStatus("تم إنشاء التودو بنجاح!", "success");
+            }
+          } catch (error) {
+            spinner.style.display = "none";
+            resultDiv.classList.remove("hidden");
+            responseDataDiv.textContent = `خطأ: ${error.message}`;
+            imagePreview.classList.add("hidden");
+            showStatus(`فشلت العملية: ${error.message}`, "error");
+            errorDebug.textContent = `نوع الخطأ: ${error.name}\nرسالة الخطأ: ${error.message}\nمكدس المكالمات: ${error.stack || "غير متاح"}`;
+          }
+        });
+
+      // استعراض الصورة قبل الرفع
+      document
+        .getElementById("imageInput")
+        .addEventListener("change", function () {
+          const file = this.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const imagePreview = document.getElementById("imagePreview");
+              imagePreview.src = e.target.result;
+              imagePreview.classList.remove("hidden");
+              document.getElementById("result").classList.remove("hidden");
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+    </script>
+  </body>
+</html> -->

@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .dot {
+    @apply relative flex items-center h-full w-1/4 origin-top;
+  }
+
+  .dot::after {
+    content: "";
+    @apply block w-full h-1/4 rounded-full bg-accent;
+  }
+
+  .first {
+    animation: swing 1.2s linear infinite;
+  }
+
+  .last {
+    animation: swing2 1.2s linear infinite;
+  }
+
+  @keyframes swing {
+    0% {
+      transform: rotate(0deg);
+      animation-timing-function: ease-out;
+    }
+    25% {
+      transform: rotate(70deg);
+      animation-timing-function: ease-in;
+    }
+    50% {
+      transform: rotate(0deg);
+      animation-timing-function: linear;
+    }
+  }
+
+  @keyframes swing2 {
+    0% {
+      transform: rotate(0deg);
+      animation-timing-function: linear;
+    }
+    50% {
+      transform: rotate(0deg);
+      animation-timing-function: ease-out;
+    }
+    75% {
+      transform: rotate(-70deg);
+      animation-timing-function: ease-in;
+    }
+  }
+}
