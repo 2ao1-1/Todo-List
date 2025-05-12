@@ -1,6 +1,7 @@
 import { DropResult } from "@hello-pangea/dnd";
-import { Task, Todo } from "../../../types/TodoType";
 import { UseMutationResult } from "@tanstack/react-query";
+import { Task, Todo } from "../../common/types";
+import { taskData } from "../../../types/TodoType";
 
 export default function UseDragAndDrop(
   localTasks: Task[],
@@ -14,7 +15,7 @@ export default function UseDragAndDrop(
     {
       todoId: number;
       taskId: number;
-      taskData: { text: string; order: number | undefined };
+      taskData: taskData;
     },
     unknown
   >
