@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { Todo } from "../TodoType";
 import toast from "react-hot-toast";
 import {
   createTodo,
@@ -9,6 +8,7 @@ import {
   getTodoByID,
   getTodos,
 } from "../../../services/TodoApi";
+import { Todo } from "../types";
 
 type CreateTodoInput = {
   title: string;
