@@ -1,50 +1,69 @@
 import axios from "axios";
 import {
   LoginRequest,
-  LoginResponse,
   RegisterRequest,
-  RegisterResponse,
+  AuthResponse,
   UserProfile,
-} from "../types/AuthTypes";
+} from "../pages/Auth/types/AuthTypes";
+import { getToken, removeToken, setToken } from "../utils/helper";
 
-import { setToken, removeToken } from "./authToken";
+const API_URL = import.meta.env.VITE_API_URL;
 
-const API_URL = "http://localhost:5000/api/auth";
+function handleError(err: unknown): never {
+  if (axios.isAxiosError(err)) {
+    if (err.response?.status === 401) {
+      removeToken();
+    }
+    throw new Error(err.response?.data?.message || "Failed to fetch");
+  }
+  throw err;
+}
 
-// register : post new user data to get token
-export const RegisterNewUser = async (
+export const registerUser = async (
   data: RegisterRequest
-): Promise<RegisterResponse> => {
-  const res = await axios.post<RegisterResponse>(`${API_URL}/register`, data);
+): Promise<AuthResponse> => {
+  try {
+    const res = await axios.post(`${API_URL}/auth/register`, data);
 
-  // Clear old token if exists
-  removeToken();
-
-  // Save new token
-  setToken(res.data.token);
-
-  return res.data;
+    // Save new token based on remember preference
+    setToken(res.data.token, data.remember);
+    return res.data;
+  } catch (err) {
+    handleError(err);
+  }
 };
 
-// login : post user data to get token
-export const loginUser = async (data: LoginRequest): Promise<LoginResponse> => {
-  const res = await axios.post<LoginResponse>(`${API_URL}/login`, data);
+export const loginUser = async (data: LoginRequest): Promise<AuthResponse> => {
+  try {
+    const res = await axios.post(`${API_URL}/auth/login`, data);
 
-  // Clear old token if exists
-  removeToken();
-
-  // Save new token
-  setToken(res.data.token);
-
-  return res.data;
+    // Save new token based on remember preference
+    setToken(res.data.token, data.remember);
+    return res.data;
+  } catch (err) {
+    handleError(err);
+  }
 };
 
-// get all user data
-export const userProfile = async (token: string): Promise<UserProfile> => {
-  const res = await axios.get<UserProfile>(`${API_URL}/profile`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return res.data;
+export const getUserProfile = async (): Promise<UserProfile> => {
+  const token = getToken();
+
+  if (!token) {
+    throw new Error("No authentication token found");
+  }
+
+  try {
+    const res = await axios.get<UserProfile>(`${API_URL}/auth/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    handleError(err);
+  }
+};
+
+export const logoutUser = (): void => {
+  removeToken();
 };

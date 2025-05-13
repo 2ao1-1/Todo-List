@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  backend:
+    build: ./path/to/backend
+    container_name: todo-backend
+    restart: always
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+  frontend:
+    build: ./path/to/frontend
+    container_name: todo-frontend
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
