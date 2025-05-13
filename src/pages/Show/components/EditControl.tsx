@@ -1,10 +1,12 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { EditControlProps } from "../types/ShowTodoType";
 
 export default function EditControl({
   editOnClick,
   deleteOnClick,
-}: EditControlProps) {
+}: {
+  editOnClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  deleteOnClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}) {
   return (
     <div className="flex gap-2">
       <button

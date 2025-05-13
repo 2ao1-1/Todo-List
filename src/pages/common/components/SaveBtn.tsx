@@ -1,7 +1,12 @@
 import { FaSave } from "react-icons/fa";
-import { SaveBtnProps } from "../types/CommonType";
 
-export function SaveBtn({ isEditing, onClick }: SaveBtnProps) {
+export function SaveBtn({
+  isEditing,
+  onClick,
+}: {
+  isEditing?: boolean;
+  onClick?: () => void;
+}) {
   return (
     <button
       type="submit"

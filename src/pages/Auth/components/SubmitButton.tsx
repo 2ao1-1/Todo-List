@@ -1,5 +1,7 @@
-import { SubmitBtnProps } from "../types/componentsType";
-
+interface SubmitBtnProps {
+  isLoading: boolean;
+  type: string;
+}
 export default function SubmitButton({ isLoading, type }: SubmitBtnProps) {
   return (
     <div className="flex justify-center">

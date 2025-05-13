@@ -1,8 +1,7 @@
 import { FaTrash } from "react-icons/fa";
 import useDelete from "../hook/useDelete";
-import { deleteBtbProps } from "../types/CommonType";
 
-export function DeleteBtn({ id, title }: deleteBtbProps) {
+export function DeleteBtn({ id, title }: { id: number; title: string }) {
   const { handleDeleteTodo } = useDelete();
 
   const onDelete = (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,6 +1,15 @@
-import { NewTodoInputProps } from "../types/CommonType";
+import { UseFormRegister } from "react-hook-form";
 
-export default function NewTodoInput({ register }: NewTodoInputProps) {
+export interface FormInputs {
+  title: string;
+  icon: string;
+}
+
+export default function NewTodoInput({
+  register,
+}: {
+  register: UseFormRegister<FormInputs>;
+}) {
   return (
     <div className="flex-1 relative ">
       <input

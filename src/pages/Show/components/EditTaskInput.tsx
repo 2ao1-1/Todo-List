@@ -1,11 +1,14 @@
-import { EditTaskInputProps } from "../types/ShowTodoType";
-
 export default function EditTaskInput({
   editTaskText,
   setEditTaskText,
   setEditingTaskId,
   handleUpdateTask,
-}: EditTaskInputProps) {
+}: {
+  editTaskText: string;
+  setEditTaskText: React.Dispatch<React.SetStateAction<string>>;
+  setEditingTaskId: React.Dispatch<React.SetStateAction<number | null>>;
+  handleUpdateTask: () => void;
+}) {
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditTaskText(e.target.value);
   };

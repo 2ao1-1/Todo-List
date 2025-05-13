@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import useTask from "../../common/hook/useTask";
-import { Todo } from "../../../types/TodoType";
+import { Todo } from "../../common/types";
 
 export interface NewTaskFormData {
   newTaskText: string;

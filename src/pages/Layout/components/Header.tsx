@@ -3,9 +3,14 @@ import { useAuth } from "../../Auth/context/AuthContext";
 import UserBadge from "./UserBadge";
 import LogoutBtn from "./LogoutBtn";
 import OpenSideBtn from "../../common/components/OpenSideBtn";
-import { HeaderProps } from "../types/LayoutTypes";
 
-export default function Header({ isOpen, toggleSidebar }: HeaderProps) {
+export default function Header({
+  isOpen,
+  toggleSidebar,
+}: {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}) {
   const { user, logout } = useAuth();
   const [openBadge, setOpenBadge] = useState(false);
 

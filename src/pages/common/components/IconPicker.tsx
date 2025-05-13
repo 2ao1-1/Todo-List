@@ -1,4 +1,3 @@
-import { IconPickerprops } from "../types/CommonType";
 import Icon from "./Icon";
 
 export default function IconPicker({
@@ -6,7 +5,12 @@ export default function IconPicker({
   handleSelectEmoji,
   showPicker,
   watch,
-}: IconPickerprops) {
+}: {
+  handleShowIcon: () => void;
+  handleSelectEmoji: (emoji: { native: string }) => void;
+  showPicker: boolean;
+  watch: (name: string) => string;
+}) {
   return (
     <div className="">
       <button

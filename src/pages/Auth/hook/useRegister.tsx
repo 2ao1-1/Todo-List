@@ -3,7 +3,12 @@ import { useAuth } from "../context/AuthContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { RegisterFormData } from "../types/componentsType";
+
+export interface RegisterFormData {
+  name: string;
+  email: string;
+  password: string;
+}
 
 export default function useRegister() {
   const [remember, setRemember] = useState(false);

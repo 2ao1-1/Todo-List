@@ -1,5 +1,10 @@
-import { RememberRowProps } from "../types/componentsType";
+import { Dispatch, SetStateAction } from "react";
 
+interface RememberRowProps {
+  isLoading: boolean;
+  remember: boolean;
+  setRemember: Dispatch<SetStateAction<boolean>>;
+}
 export default function RememberRow({
   isLoading,
   remember,

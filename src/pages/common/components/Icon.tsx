@@ -1,8 +1,11 @@
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-import { IconProps } from "../types/CommonType";
 
-export default function Icon({ handleSelectEmoji }: IconProps) {
+export default function Icon({
+  handleSelectEmoji,
+}: {
+  handleSelectEmoji: (emoji: { native: string }) => void;
+}) {
   return (
     <Picker
       data={data}

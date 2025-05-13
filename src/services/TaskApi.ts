@@ -1,4 +1,4 @@
-import { Task } from "../pages/common/types/TodoType";
+import { Task } from "../pages/common/types";
 import { api } from "./AxiosApi";
 
 export const addTask = async (

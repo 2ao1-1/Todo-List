@@ -1,7 +1,15 @@
-import { TodoUnitProps } from "../types/LayoutTypes";
+import { Todo } from "../../common/types";
 import SideTodoItem from "./SideTodoItem";
 
-export function TodoUnits({ type, isOpen, typeData }: TodoUnitProps) {
+export function TodoUnits({
+  type,
+  isOpen,
+  typeData,
+}: {
+  type: string;
+  isOpen: boolean;
+  typeData: Todo[];
+}) {
   return (
     <div className="">
       {isOpen && <h3 className="text-sm capitalize text-secondary">{type}</h3>}

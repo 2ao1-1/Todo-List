@@ -1,6 +1,13 @@
-import { NameInputProps } from "../types/CreateTypes";
+import { UseFormRegister } from "react-hook-form";
+import { RegisterFormData } from "../../Auth/hook/useRegister";
 
-export default function NameInput({ register, isLoading }: NameInputProps) {
+export default function NameInput({
+  register,
+  isLoading,
+}: {
+  register: UseFormRegister<RegisterFormData>;
+  isLoading: boolean;
+}) {
   return (
     <input
       id="name"

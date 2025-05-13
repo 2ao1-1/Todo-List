@@ -1,6 +1,13 @@
-import { EditInputProps } from "../types/ShowTodoType";
+import { UseFormRegister } from "react-hook-form";
 
-export function EditInput({ registerEditTodo }: EditInputProps) {
+export function EditInput({
+  registerEditTodo,
+}: {
+  registerEditTodo: UseFormRegister<{
+    editTodoTitle: string;
+    editTodoIcon: string;
+  }>;
+}) {
   return (
     <>
       <input

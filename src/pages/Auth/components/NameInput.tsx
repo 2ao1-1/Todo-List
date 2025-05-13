@@ -1,5 +1,10 @@
-import { NameInputProps } from "../types/componentsType";
+import { UseFormRegister } from "react-hook-form";
+import { RegisterFormData } from "../hook/useRegister";
 
+interface NameInputProps {
+  register: UseFormRegister<RegisterFormData>;
+  isLoading: boolean;
+}
 export default function NameInput({ register, isLoading }: NameInputProps) {
   return (
     <input

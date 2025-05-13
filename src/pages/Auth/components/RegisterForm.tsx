@@ -1,4 +1,4 @@
-import useRegister from "../hook/useRegister";
+import useRegister, { RegisterFormData } from "../hook/useRegister";
 import FormRow from "./FormRow";
 import NameInput from "./NameInput";
 import EmailInput from "./EmailInput";
@@ -6,7 +6,6 @@ import PasswordInput from "./PasswordInput";
 import SubmitButton from "./SubmitButton";
 import RememberRow from "./RememberRow";
 import Loader from "../../Loader";
-import { RegisterFormData } from "../types/componentsType";
 
 export default function RegisterForm() {
   const {

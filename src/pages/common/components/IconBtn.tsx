@@ -1,6 +1,10 @@
-import { IconBtnProps } from "../types/CommonType";
-
-export function IconBtn({ onClick, newIcon }: IconBtnProps) {
+export function IconBtn({
+  onClick,
+  newIcon,
+}: {
+  onClick: () => void;
+  newIcon: string | undefined;
+}) {
   return (
     <button
       type="button"

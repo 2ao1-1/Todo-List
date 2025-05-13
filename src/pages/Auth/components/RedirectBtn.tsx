@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import { dirBtnProps } from "../types/componentsType";
 
+interface dirBtnProps {
+  type: string;
+}
 export default function RedirectBtn({ type }: dirBtnProps) {
   if (type === "signin")
     return (

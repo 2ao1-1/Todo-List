@@ -1,6 +1,4 @@
-import { CreatebtnProps } from "../types/CommonType";
-
-export default function CreateBtn({ isSubmitting }: CreatebtnProps) {
+export default function CreateBtn({ isSubmitting }: { isSubmitting: boolean }) {
   return (
     <button
       type="submit"

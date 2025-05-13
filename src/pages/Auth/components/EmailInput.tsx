@@ -1,6 +1,9 @@
-import { FieldValues, Path } from "react-hook-form";
-import { EmailInputProps } from "../types/componentsType";
+import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
+interface EmailInputProps<T extends FieldValues> {
+  register: UseFormRegister<T>;
+  isLoading: boolean;
+}
 export default function EmailInput<T extends FieldValues>({
   register,
   isLoading,

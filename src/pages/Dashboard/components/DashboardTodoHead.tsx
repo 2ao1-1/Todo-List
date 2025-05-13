@@ -1,7 +1,7 @@
 import { DeleteBtn } from "../../common/components/DeleteBtn";
-import { DashboardProps, HeadBodyProps } from "../types/DashboardTypes";
+import { Todo } from "../../common/types";
 
-export default function DashboardTodoHead({ todo }: DashboardProps) {
+export default function DashboardTodoHead({ todo }: { todo: Todo }) {
   return (
     <div className="flex items-center justify-between mb-6 pt-4">
       <HeadBody icon={todo.icon} title={todo.title} />
@@ -11,7 +11,7 @@ export default function DashboardTodoHead({ todo }: DashboardProps) {
   );
 }
 
-function HeadBody({ icon, title }: HeadBodyProps) {
+function HeadBody({ icon, title }: { icon: string; title: string }) {
   return (
     <div className="flex items-center min-w-0 gap-2">
       <span className="text-2xl text-gray-300">{icon || "📝"}</span>

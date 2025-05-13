@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Todo, Task } from "../../../types/TodoType";
+import { Task, Todo } from "../../common/types";
 
 interface UseKeyCutsProps {
   todo?: Todo;

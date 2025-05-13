@@ -1,8 +1,13 @@
 import { GoPlus } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
-import { NewTodoBtnProps } from "../types/CommonType";
 
-export default function NewTodoBtn({ isOpen, type }: NewTodoBtnProps) {
+export default function NewTodoBtn({
+  isOpen,
+  type,
+}: {
+  isOpen?: boolean;
+  type?: string;
+}) {
   const navigate = useNavigate();
 
   const handleAddNewTodo = () => {

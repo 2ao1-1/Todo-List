@@ -9,9 +9,8 @@ import TaskItem from "./TaskItem";
 import useTaskListState from "../hook/useTaskListState";
 import useKeyCuts from "../hook/useKeyCuts";
 import UseDragAndDrop from "../hook/useDragAndDrop";
-import { TaskDragDropProps } from "../types/ShowTodoType";
 
-export default function TaskList({ todoId }: TaskDragDropProps) {
+export default function TaskList({ todoId }: { todoId: number | undefined }) {
   const { GetTodoById } = useTodos();
   const { EditTask, DeleteTask } = useTask();
   const { data: todo } = GetTodoById(Number(todoId));
@@ -46,7 +45,7 @@ export default function TaskList({ todoId }: TaskDragDropProps) {
     EditTask.mutate({
       todoId: todo.id,
       taskId,
-      taskData: { text: "", completed: !completed },
+      taskData: { completed: !completed },
     });
   };
 

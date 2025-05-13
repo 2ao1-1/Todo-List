@@ -1,6 +1,10 @@
-import { AddTaskBtnProps } from "../types/ShowTodoType";
-
-export function AddTaskBtn({ Adding, newTaskText }: AddTaskBtnProps) {
+export function AddTaskBtn({
+  Adding,
+  newTaskText,
+}: {
+  Adding: boolean;
+  newTaskText: string;
+}) {
   return (
     <button
       type="submit"

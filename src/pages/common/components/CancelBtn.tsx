@@ -1,8 +1,13 @@
 import { GoX } from "react-icons/go";
 import useCancel from "../hook/useCancel";
-import { CancelBtnProps } from "../types/CommonType";
 
-export function CancelBtn({ type, onClick }: CancelBtnProps) {
+export function CancelBtn({
+  type,
+  onClick,
+}: {
+  type?: string;
+  onClick?: () => void;
+}) {
   const handleClose = useCancel();
   return (
     <button

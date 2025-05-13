@@ -3,9 +3,8 @@ import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import RememberRow from "./RememberRow";
 import SubmitButton from "./SubmitButton";
-import useLogin from "../hook/useLogin";
+import useLogin, { LoginFormData } from "../hook/useLogin";
 import Loader from "../../Loader";
-import { LoginFormData } from "../types/componentsType";
 
 export default function LoginForm() {
   const {

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { getToken, removeToken } from "../utils/helper";
 
-// const API_URL = import.meta.env.VITE_API_URL;
 const API_URL = "http://144.91.75.57:5012/api";
 
 export const api = axios.create({

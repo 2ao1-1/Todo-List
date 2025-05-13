@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Task } from "../../../types/TodoType";
+import { Task } from "../../common/types";
 
 export default function useTaskListState(todo?: { tasks: Task[] }) {
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);

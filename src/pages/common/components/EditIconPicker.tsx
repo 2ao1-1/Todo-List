@@ -1,12 +1,14 @@
 import useIconEdit from "../hook/useIconEdit";
-import { EditIconProps } from "../types/CommonType";
 import Icon from "./Icon";
 import { IconBtn } from "./IconBtn";
 
 export default function EditIconPicker({
   handleIconSelect,
   editTodoIcon,
-}: EditIconProps) {
+}: {
+  handleIconSelect: (emoji: { native: string }) => void;
+  editTodoIcon: string | undefined;
+}) {
   const { showIconPicker, handleShowIcon } = useIconEdit();
 
   return (

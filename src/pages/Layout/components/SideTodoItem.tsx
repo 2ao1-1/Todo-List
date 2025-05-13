@@ -1,12 +1,16 @@
-import { SideTodoItemProps } from "../types/LayoutTypes";
-
 export default function SideTodoItem({
   id,
   title,
   icon,
   isOpen,
   type,
-}: SideTodoItemProps) {
+}: {
+  id: number;
+  title: string;
+  icon: string;
+  isOpen: boolean;
+  type: string;
+}) {
   return (
     <li
       key={id}

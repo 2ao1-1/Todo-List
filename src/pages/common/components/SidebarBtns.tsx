@@ -1,12 +1,15 @@
 import OpenSideBtn from "./OpenSideBtn";
 import NewTodoBtn from "./NewTodoBtn";
-import { SideBarBtnsProps } from "../types/CommonType";
 
 export default function SidebarBtns({
   toggleSidebar,
   isOpen,
   children,
-}: SideBarBtnsProps) {
+}: {
+  toggleSidebar: () => void;
+  isOpen: boolean;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex flex-col justify-between h-full w-full bg-main py-2 px-1 gap-2 items-center">
       {/* open sidebar button */}

@@ -1,9 +1,8 @@
 import { useTodos } from "../../common/hook/useTodos";
-import { Todo } from "../../common/types/TodoType";
-import { OpenProps } from "../types/LayoutTypes";
+import { Todo } from "../../common/types";
 import { TodoUnits } from "./TodoUnits";
 
-export default function SideTodo({ isOpen }: OpenProps) {
+export default function SideTodo({ isOpen }: { isOpen: boolean }) {
   const { AllTodos } = useTodos();
 
   const todos: Todo[] = Array.isArray(AllTodos.data) ? AllTodos.data : [];

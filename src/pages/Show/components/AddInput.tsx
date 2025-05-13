@@ -1,6 +1,13 @@
-import { AddInputProps } from "../types/ShowTodoType";
+import { UseFormRegister } from "react-hook-form";
+import { NewTaskFormData } from "../hook/useAddNewTask";
 
-export function AddInput({ registerNewTask, onAddClick }: AddInputProps) {
+export function AddInput({
+  registerNewTask,
+  onAddClick,
+}: {
+  registerNewTask: UseFormRegister<NewTaskFormData>;
+  onAddClick: React.KeyboardEventHandler;
+}) {
   return (
     <input
       type="text"

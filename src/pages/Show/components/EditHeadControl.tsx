@@ -1,12 +1,14 @@
 import { SaveControl } from "../../common/components/SaveControl";
 import UseEditHeadControl from "../hook/useEditHeadControl";
-import { EditHeadControlProps } from "../types/ShowTodoType";
 import { EditTodoForm } from "./EditTodoForm";
 
 export default function EditHeadControl({
   todo,
   setIsEditingTodo,
-}: EditHeadControlProps) {
+}: {
+  todo: { id: number; title: string; icon: string } | undefined;
+  setIsEditingTodo: (value: boolean) => void;
+}) {
   const {
     isEditing,
     registerEditTodo,

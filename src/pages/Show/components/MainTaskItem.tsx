@@ -1,6 +1,6 @@
 import EditControl from "./EditControl";
 import { CheckBtn } from "./CheckBtn";
-import { MainTaskItemProps } from "../types/ShowTodoType";
+import { Task } from "../../common/types";
 
 export function MainTaskItem({
   task,
@@ -8,7 +8,13 @@ export function MainTaskItem({
   setEditingTaskId,
   setEditTaskText,
   handleDeleteTask,
-}: MainTaskItemProps) {
+}: {
+  task: Task;
+  handleToggleComplete: (taskId: number, completed: boolean) => void;
+  setEditingTaskId: React.Dispatch<React.SetStateAction<number | null>>;
+  setEditTaskText: React.Dispatch<React.SetStateAction<string>>;
+  handleDeleteTask: (taskId: number) => void;
+}) {
   return (
     <>
       <CheckBtn

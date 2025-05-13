@@ -1,4 +1,4 @@
-import { Todo } from "../pages/common/types/TodoType";
+import { Todo } from "../pages/common/types";
 import { api } from "./AxiosApi";
 
 export const getTodos = async (): Promise<Todo[]> => {

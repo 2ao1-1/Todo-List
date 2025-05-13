@@ -1,4 +1,4 @@
-import { TaskItemProps } from "../types/ShowTodoType";
+import { DraggableProvided, DraggableStateSnapshot } from "@hello-pangea/dnd";
 
 export default function TaskItem({
   children,
@@ -8,7 +8,15 @@ export default function TaskItem({
   snapshot,
   selectedTaskIndex,
   setSelectedTaskIndex,
-}: TaskItemProps) {
+}: {
+  children: React.ReactNode;
+  completed: boolean;
+  index: number;
+  providedDraggable: DraggableProvided;
+  snapshot: DraggableStateSnapshot;
+  selectedTaskIndex: number | null;
+  setSelectedTaskIndex: React.Dispatch<React.SetStateAction<number | null>>;
+}) {
   return (
     <li
       ref={providedDraggable.innerRef}

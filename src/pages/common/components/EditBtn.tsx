@@ -1,7 +1,6 @@
 import { FaEdit } from "react-icons/fa";
-import { ControlerProps } from "../types/CommonType";
 
-export function EditBtn({ onClick }: ControlerProps) {
+export function EditBtn({ onClick }: { onClick: (value: boolean) => void }) {
   const handleEdit = () => onClick(true);
 
   return (

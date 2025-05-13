@@ -1,7 +1,12 @@
 import { GoX } from "react-icons/go";
-import { logoutType } from "../types/LayoutTypes";
 
-export default function LogoutBtn({ logout, handleUserbadge }: logoutType) {
+export default function LogoutBtn({
+  logout,
+  handleUserbadge,
+}: {
+  handleUserbadge: () => void;
+  logout: () => void;
+}) {
   return (
     <div className="absolute right-0 mt-2 w-40 bg-white border shadow-lg p-2 flex gap-2 items-center">
       {/* logout btn */}

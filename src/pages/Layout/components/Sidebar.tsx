@@ -1,8 +1,13 @@
 import SidebarBtns from "../../common/components/SidebarBtns";
-import { SidebarProps } from "../types/LayoutTypes";
 import SideTodo from "./SideTodo";
 
-export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
+export default function Sidebar({
+  isOpen,
+  toggleSidebar,
+}: {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}) {
   return (
     <aside
       className={`${

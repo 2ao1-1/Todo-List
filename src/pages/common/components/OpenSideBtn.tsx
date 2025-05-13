@@ -1,11 +1,14 @@
 import { GoSidebarCollapse, GoSidebarExpand } from "react-icons/go";
-import { OpenSideBtnProps } from "../types/CommonType";
 
 export default function OpenSideBtn({
   toggleSidebar,
   isOpen,
   view,
-}: OpenSideBtnProps) {
+}: {
+  view: "head" | "side";
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}) {
   if (view === "head")
     return (
       <button onClick={toggleSidebar} className="sm:hidden text-xl">

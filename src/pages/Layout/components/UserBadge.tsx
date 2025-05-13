@@ -1,10 +1,12 @@
 import { GoPerson } from "react-icons/go";
-import { UserBadgeProps } from "../types/LayoutTypes";
 
 export default function UserBadge({
   handleUserbadge,
   userName,
-}: UserBadgeProps) {
+}: {
+  handleUserbadge: () => void;
+  userName: string | undefined;
+}) {
   return (
     <div
       className="cursor-pointer flex items-center gap-2"
