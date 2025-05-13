@@ -1,7 +1,7 @@
 import { UseFormRegister } from "react-hook-form";
 import { NewTaskFormData } from "../hook/useAddNewTask";
-import { Task, Todo } from "../../common/types";
 import { DraggableProvided, DraggableStateSnapshot } from "@hello-pangea/dnd";
+import { Task } from "../../common/types";
 
 export type AddInputProps = {
   registerNewTask: UseFormRegister<NewTaskFormData>;
@@ -77,10 +77,5 @@ export type TaskItemProps = {
 };
 
 export type TaskDragDropProps = {
-  todoId: number;
-};
-
-export type TodoHeadProps = {
-  todo: Todo;
-  setIsEditingTodo: (value: boolean) => void;
+  todoId: number | undefined;
 };

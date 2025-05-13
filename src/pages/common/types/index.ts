@@ -1,4 +1,3 @@
-// Basic Todo and Task types
 export interface Todo {
   id: number;
   title: string;
@@ -59,7 +58,7 @@ export interface EditTaskMutation {
   todoId: number;
   taskId: number;
   taskData: Partial<{
-    text: string;
+    text?: string;
     completed: boolean;
     order: number;
   }>;

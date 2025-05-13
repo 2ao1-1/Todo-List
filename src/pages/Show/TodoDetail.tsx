@@ -14,6 +14,8 @@ import Error from "../Error";
 
 export default function TodoDetail() {
   const { todoId } = useParams<{ todoId: string }>();
+
+  console.log(Number(todoId));
   const { GetTodoById } = useTodos();
   const handleClose = useCancel();
 
@@ -23,10 +25,13 @@ export default function TodoDetail() {
     isError: todoError,
   } = GetTodoById(Number(todoId));
 
+  console.log(todo);
+  console.log(todoError);
+
   const [isEditingTodo, setIsEditingTodo] = useState(false);
 
   if (todoLoading) return <Loader />;
-  if (todoError) return <Error message={todo.error} />;
+  if (todoError) return <Error message="error todo not found" />;
 
   return (
     <>
@@ -38,9 +43,6 @@ export default function TodoDetail() {
           onClick={(e) => e.stopPropagation()}
           className="space-y-4 p-4 m-4 md:p-6 w-3/4 mx-auto bg-main border shadow-md rounded-md overflow-auto"
         >
-          {/* todo progress bar */}
-          <ProgressBar todo={todo} />
-
           <div className="border-b py-2">
             {/* Todo Header: todo title & todo controler */}
             {!isEditingTodo ? (
@@ -52,9 +54,11 @@ export default function TodoDetail() {
               />
             )}
           </div>
+          {/* todo progress bar */}
+          <ProgressBar todo={todo} />
 
           <AddTaskForm todo={todo} />
-          <TaskList todoId={todo.id} />
+          <TaskList todoId={Number(todoId)} />
           <CompletedTask todo={todo} />
 
           <ShortcutInfo />

@@ -14,7 +14,7 @@ import { TaskDragDropProps } from "../types/ShowTodoType";
 export default function TaskList({ todoId }: TaskDragDropProps) {
   const { GetTodoById } = useTodos();
   const { EditTask, DeleteTask } = useTask();
-  const { data: todo } = GetTodoById(todoId);
+  const { data: todo } = GetTodoById(Number(todoId));
 
   const {
     editingTaskId,
@@ -46,7 +46,7 @@ export default function TaskList({ todoId }: TaskDragDropProps) {
     EditTask.mutate({
       todoId: todo.id,
       taskId,
-      taskData: { text: todo.text, completed: !completed },
+      taskData: { text: "", completed: !completed },
     });
   };
 
@@ -84,7 +84,7 @@ export default function TaskList({ todoId }: TaskDragDropProps) {
         <NoTasks />
       ) : (
         <DragDropContext onDragEnd={handleDragEnd}>
-          <Droppable droppableId={`tasks-${todo.id}`} type="TASK">
+          <Droppable droppableId={`tasks-${todoId}`} type="TASK">
             {(provided) => (
               <ul
                 className="space-y-1 overflow-y-scroll max-h-80"

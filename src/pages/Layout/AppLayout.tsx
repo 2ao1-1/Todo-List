@@ -21,7 +21,7 @@ export default function AppLayout() {
   }, [isAuthenticated, navegate]);
 
   return (
-    <div className="bg-main text-primary grid grid-cols-[auto_1fr] h-screen overflow-hidden">
+    <div className="bg-main text-primary flex h-screen overflow-hidden">
       {/* sidebar */}
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
 

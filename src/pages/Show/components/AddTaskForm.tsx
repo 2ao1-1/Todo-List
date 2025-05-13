@@ -4,7 +4,7 @@ import { AddInput } from "./AddInput";
 import { KeyboardEvent } from "react";
 import { AddTaskBtn } from "./AddTaskBtn";
 
-export default function AddTaskForm({ todo }: { todo: Todo }) {
+export default function AddTaskForm({ todo }: { todo: Todo | undefined }) {
   const {
     isAdding,
     registerNewTask,

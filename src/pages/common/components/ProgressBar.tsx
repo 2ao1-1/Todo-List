@@ -1,6 +1,6 @@
 import { Todo } from "../types";
 
-export default function ProgressBar({ todo }: { todo: Todo }) {
+export default function ProgressBar({ todo }: { todo: Todo | undefined }) {
   return (
     <div className="pb-4 flex items-center gap-1">
       <div className="flex-1 h-1.5 w-full bg-gray-200 rounded-full">
@@ -16,7 +16,7 @@ export default function ProgressBar({ todo }: { todo: Todo }) {
   );
 }
 
-export function CompletedTask({ todo }: { todo: Todo }) {
+export function CompletedTask({ todo }: { todo: Todo | undefined }) {
   return (
     <div className="text-center text-sm py-2 text-secondary">
       <span>
