@@ -15,7 +15,6 @@ import Error from "../Error";
 export default function TodoDetail() {
   const { todoId } = useParams<{ todoId: string }>();
 
-  console.log(Number(todoId));
   const { GetTodoById } = useTodos();
   const handleClose = useCancel();
 
@@ -24,9 +23,6 @@ export default function TodoDetail() {
     isLoading: todoLoading,
     isError: todoError,
   } = GetTodoById(Number(todoId));
-
-  console.log(todo);
-  console.log(todoError);
 
   const [isEditingTodo, setIsEditingTodo] = useState(false);
 

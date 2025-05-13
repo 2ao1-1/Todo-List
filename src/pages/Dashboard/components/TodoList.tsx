@@ -8,7 +8,6 @@ import ProgressBar from "../../common/components/ProgressBar";
 
 export default function TodoList() {
   const { AllTodos } = useTodos();
-  console.log(AllTodos.data);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
