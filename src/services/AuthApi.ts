@@ -7,7 +7,7 @@ import {
 } from "../pages/Auth/types/AuthTypes";
 import { getToken, removeToken, setToken } from "../utils/helper";
 
-const API_URL = import.meta.env.AUTH_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 function handleError(err: unknown): never {
   if (axios.isAxiosError(err)) {
@@ -23,7 +23,7 @@ export const registerUser = async (
   data: RegisterRequest
 ): Promise<AuthResponse> => {
   try {
-    const res = await axios.post(`${API_URL}/register`, data);
+    const res = await axios.post(`${API_URL}/auth/register`, data);
 
     // Save new token based on remember preference
     setToken(res.data.token, data.remember);
@@ -35,7 +35,7 @@ export const registerUser = async (
 
 export const loginUser = async (data: LoginRequest): Promise<AuthResponse> => {
   try {
-    const res = await axios.post(`${API_URL}/login`, data);
+    const res = await axios.post(`${API_URL}/auth/login`, data);
 
     // Save new token based on remember preference
     setToken(res.data.token, data.remember);
@@ -53,7 +53,7 @@ export const getUserProfile = async (): Promise<UserProfile> => {
   }
 
   try {
-    const res = await axios.get<UserProfile>(`${API_URL}/profile`, {
+    const res = await axios.get<UserProfile>(`${API_URL}/auth/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

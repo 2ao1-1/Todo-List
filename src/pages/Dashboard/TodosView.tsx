@@ -17,7 +17,7 @@ export default function TodosView() {
         <NoTodo />
       ) : (
         <>
-          <div className="absolute bottom-4 right-4 mb-8 text-center">
+          <div className="absolute bottom-4 right-4 mb-8 text-center z-50 shadow-md">
             <NewTodo isOpen={true} type="dashboard" />
           </div>
           <TodoList />
