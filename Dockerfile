@@ -1,7 +1,6 @@
 FROM node:18 AS builder
 WORKDIR /app
 COPY . .
-COPY .env .env
 RUN npm install
 RUN npm run build
 FROM nginx:latest
