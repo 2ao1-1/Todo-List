@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Chechout Code
-        uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/todo:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/todo:latest
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
 
   deploy:
     needs: build-and-push
@@ -30,13 +30,13 @@ jobs:
 
     steps:
       - name: Deploy to Server via SSH
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/todo:latest
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
             docker stop myapp || true
             docker rm myapp || true
-            docker run -d --name myapp -p 3050:80 ${{ secrets.DOCKER_HUB_USERNAME }}/todo:latest
+            docker run -d --name myapp -p 3050:80 ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
