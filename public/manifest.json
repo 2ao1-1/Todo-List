@@ -1,0 +1,10 @@
+{
+  "name": "My Todo List App",
+  "short_name": "To-oD",
+  "description": "A simple and powerful todo list application",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ca5f5f",
+  "orientation": "portrait-primary"
+}
