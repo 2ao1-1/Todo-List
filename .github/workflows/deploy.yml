@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - version-2
-      - main
 
 jobs:
   build-and-push:
@@ -40,4 +39,4 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
             docker stop mytodoapp || true
             docker rm mytodoapp || true
-            docker run -d --name mytodoapp -p 3050:80 ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
+            docker run -d --restart unless-stopped --name mytodoapp -p 3040:80 ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
