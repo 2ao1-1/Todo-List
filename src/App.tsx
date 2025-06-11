@@ -6,7 +6,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
@@ -39,10 +39,9 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: 1,
-      // refetchOnWindowFocus: false,
-      // refetchOnReconnect: true,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: true,
       staleTime: 0,
-      // cacheTime: 600000,
     },
   },
 });
@@ -54,7 +53,7 @@ export default function App() {
         <AuthProvider>
           <Routes>
             {/* initial view */}
-            <Route path="/" element={<Navigate replace to="/app" />} />
+            <Route path="/" element={<Navigate replace to="/login" />} />
 
             {/* app view */}
             <Route path="/app" element={<AppLayout />}>
@@ -72,22 +71,22 @@ export default function App() {
         </AuthProvider>
 
         <Toaster
-          position="top-center"
-          gutter={12}
-          containerStyle={{ margin: "8px" }}
+          position="bottom-right"
+          gutter={2}
+          containerStyle={{ margin: "4px" }}
           toastOptions={{
-            success: { duration: 3000 },
-            error: { duration: 5000 },
+            success: { duration: 1000 },
+            error: { duration: 4000 },
             style: {
-              fontSize: "16px",
+              fontSize: "14px",
               maxWidth: "500px",
-              padding: "16px 24px",
+              padding: "10px 12px",
               backgroundColor: "#fff",
               color: "#1a1a1a",
             },
           }}
         />
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </BrowserRouter>
     </QueryClientProvider>
   );

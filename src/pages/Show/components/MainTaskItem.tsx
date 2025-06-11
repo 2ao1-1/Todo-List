@@ -62,7 +62,7 @@ function TaskTitle({
 }) {
   return (
     <span
-      className={`flex-grow ${completed ? "line-through text-secondary" : "text-primary"}`}
+      className={`flex-grow text-sm md:text-base ${completed ? "line-through text-secondary" : "text-primary"}`}
       onDoubleClick={onDoubleClick}
     >
       {title}

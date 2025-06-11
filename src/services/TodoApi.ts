@@ -22,10 +22,10 @@ export const createTodo = async (todoData: {
 
 export const editTodo = async (
   todoId: number,
-  dateData: { title?: string; icon?: string; completed?: boolean }
+  todoData: { title?: string; icon?: string; completed?: boolean }
 ): Promise<Todo> => {
-  const response = await api.put(`todos/${todoId}`, dateData);
-  return response.data;
+  const res = await api.put(`todos/${todoId}`, todoData);
+  return res.data;
 };
 
 export const deleteTodo = async (todoId: number): Promise<void> => {

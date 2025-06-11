@@ -21,7 +21,7 @@ export default function AppLayout() {
   }, [isAuthenticated, navegate]);
 
   return (
-    <div className="bg-main text-primary flex h-screen overflow-hidden">
+    <div className="bg-main text-primary flex h-screen overflow-hidden relative">
       {/* sidebar */}
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
 
@@ -31,7 +31,7 @@ export default function AppLayout() {
 
         {/* main content */}
         <TodosView />
-        <main className="overflow-y-scroll">
+        <main className="overflow-y-scroll ">
           <Outlet />
         </main>
       </div>

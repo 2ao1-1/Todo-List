@@ -9,9 +9,9 @@ export function IconBtn({
     <button
       type="button"
       onClick={onClick}
-      className="flex items-center justify-center p-1.5 border border-accent rounded-full bg-white hover:bg-gray-50"
+      className="flex items-center justify-center p-0.5 md:p-1.5 "
     >
-      <span className="text-xl">{newIcon || "📝"}</span>
+      <span className="text-md md:text-base">{newIcon || "❓"}</span>
     </button>
   );
 }

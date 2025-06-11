@@ -11,15 +11,15 @@ export default function EditControl({
     <div className="flex gap-2">
       <button
         onClick={editOnClick}
-        className="text-gray-500 hover:text-blue-500"
+        className="text-gray-500 hover:text-blue-500 text-xs  md:text-base"
       >
-        <FaEdit size={14} />
+        <FaEdit />
       </button>
       <button
         onClick={deleteOnClick}
-        className="text-gray-500 hover:text-red-500"
+        className="text-gray-500 hover:text-red-500 text-xs md:text-base"
       >
-        <FaTrash size={14} />
+        <FaTrash />
       </button>
     </div>
   );

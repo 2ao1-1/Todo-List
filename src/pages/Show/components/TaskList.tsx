@@ -9,6 +9,8 @@ import TaskItem from "./TaskItem";
 import useTaskListState from "../hook/useTaskListState";
 import useKeyCuts from "../hook/useKeyCuts";
 import UseDragAndDrop from "../hook/useDragAndDrop";
+import toast from "react-hot-toast";
+import { ToastConfirm } from "../../common/components/ToastConfirm";
 
 export default function TaskList({ todoId }: { todoId: number | undefined }) {
   const { GetTodoById } = useTodos();
@@ -51,9 +53,13 @@ export default function TaskList({ todoId }: { todoId: number | undefined }) {
 
   const handleDeleteTask = (taskId: number) => {
     if (!todo) return;
-    if (window.confirm("Are you sure you want to delete this task?")) {
-      DeleteTask.mutate({ todoId: todo.id, taskId });
-    }
+    toast.custom((t) => (
+      <ToastConfirm
+        t={t}
+        message="Are you sure you want to delete this task?"
+        onConfirm={() => DeleteTask.mutate({ todoId: todo.id, taskId })}
+      />
+    ));
   };
 
   const handleDragEnd = UseDragAndDrop(
@@ -78,7 +84,7 @@ export default function TaskList({ todoId }: { todoId: number | undefined }) {
   });
 
   return (
-    <div className="border border-gray-200 rounded-lg mb-4">
+    <div className="mb-4 overflow-y-scroll">
       {localTasks.length === 0 ? (
         <NoTasks />
       ) : (
@@ -86,7 +92,7 @@ export default function TaskList({ todoId }: { todoId: number | undefined }) {
           <Droppable droppableId={`tasks-${todoId}`} type="TASK">
             {(provided) => (
               <ul
-                className="space-y-1 overflow-y-scroll max-h-80"
+                className="space-y-1 max-h-80 py-2"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >

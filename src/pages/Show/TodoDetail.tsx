@@ -33,13 +33,13 @@ export default function TodoDetail() {
     <>
       <div
         onClick={handleClose}
-        className="w-full flex flex-col justify-center items-center space-y-4 overflow-y-scroll h-screen z-50 bg-secondary/40 absolute top-0 p-4 inset-0 "
+        className="w-full flex flex-col justify-center items-center space-y-4 overflow-y-scroll h-screen z-[100] bg-secondary/40 absolute top-0 p-2 md:p-4 inset-0 "
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="space-y-4 p-4 m-4 md:p-6 w-3/4 mx-auto bg-main border shadow-md rounded-md overflow-auto"
+          className="space-y-4 w-full h-screen md:max-h-max p-4 md:p-6 md:w-3/4 bg-main border shadow-md rounded-md overflow-auto"
         >
-          <div className="border-b py-2">
+          <div className="border-b py-2 w-full">
             {/* Todo Header: todo title & todo controler */}
             {!isEditingTodo ? (
               <TodoHead setIsEditingTodo={setIsEditingTodo} todo={todo} />

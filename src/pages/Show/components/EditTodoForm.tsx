@@ -15,7 +15,7 @@ export function EditTodoForm({
   }>;
 }) {
   return (
-    <div className="flex-1 flex items-center gap-3">
+    <div className="flex-1 flex items-center gap-1 relative">
       <EditIconPicker
         handleIconSelect={handleIconSelect}
         editTodoIcon={editTodoIcon}

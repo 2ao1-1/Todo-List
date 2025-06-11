@@ -11,12 +11,29 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 function handleError(err: unknown): never {
   if (axios.isAxiosError(err)) {
+    // Handle different HTTP status codes
     if (err.response?.status === 401) {
       removeToken();
+      throw new Error("Authentication failed. Please login again.");
     }
-    throw new Error(err.response?.data?.message || "Failed to fetch");
+
+    if (err.response?.status === 400) {
+      throw new Error(err.response?.data?.message || "Invalid request data");
+    }
+
+    if (err.response?.status >= 500) {
+      throw new Error("Server error. Please try again later.");
+    }
+
+    throw new Error(err.response?.data?.message || "Request failed");
   }
-  throw err;
+
+  // Handle network errors or other unknown errors
+  if (err instanceof Error) {
+    throw err;
+  }
+
+  throw new Error("An unexpected error occurred");
 }
 
 export const registerUser = async (
@@ -49,7 +66,7 @@ export const getUserProfile = async (): Promise<UserProfile> => {
   const token = getToken();
 
   if (!token) {
-    throw new Error("No authentication token found");
+    throw new Error("User not authenticated");
   }
 
   try {

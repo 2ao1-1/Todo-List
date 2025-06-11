@@ -11,7 +11,10 @@ export default function OpenSideBtn({
 }) {
   if (view === "head")
     return (
-      <button onClick={toggleSidebar} className="sm:hidden text-xl">
+      <button
+        onClick={toggleSidebar}
+        className="sm:hidden text-sm md:text-base"
+      >
         {!isOpen && <GoSidebarCollapse />}
       </button>
     );
@@ -21,7 +24,7 @@ export default function OpenSideBtn({
       <div
         className={`border-b w-full py-2 ${!isOpen && "flex justify-center py-3"}`}
       >
-        <button onClick={toggleSidebar} className="text-xl">
+        <button onClick={toggleSidebar} className=" text-sm md:text-base ">
           {isOpen ? <GoSidebarExpand /> : <GoSidebarCollapse />}
         </button>
       </div>

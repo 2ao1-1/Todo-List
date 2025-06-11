@@ -9,7 +9,7 @@ export default function EditIconPicker({
   handleIconSelect: (emoji: { native: string }) => void;
   editTodoIcon: string | undefined;
 }) {
-  const { showIconPicker, handleShowIcon } = useIconEdit();
+  const { showIconPicker, handleShowIcon, pickerRef } = useIconEdit();
 
   return (
     <>
@@ -18,7 +18,10 @@ export default function EditIconPicker({
 
       {/* show icon picker */}
       {showIconPicker && (
-        <div className="absolute z-20 bg-white rounded-full">
+        <div
+          ref={pickerRef}
+          className="absolute top-8 z-20 bg-white rounded-full"
+        >
           <Icon handleSelectEmoji={handleIconSelect} />
         </div>
       )}

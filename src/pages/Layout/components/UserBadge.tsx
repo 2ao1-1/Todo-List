@@ -18,7 +18,9 @@ export default function UserBadge({
       </span>
 
       {/* user name */}
-      <span className="text-sm md:text-xl capitalize">{userName}</span>
+      <span className="hidden md:block text-sm md:text-xl capitalize">
+        {userName}
+      </span>
     </div>
   );
 }

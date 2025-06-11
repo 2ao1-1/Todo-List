@@ -9,7 +9,7 @@ export default function DragAndDropBtn({
   return (
     <div
       {...providedDraggable.dragHandleProps}
-      className="mr-2 text-gray-400 cursor-grab hover:text-gray-600"
+      className="mr-2 text-gray-400 cursor-grab hover:text-gray-600 text-xs md:text-base"
     >
       <MdDragIndicator size={20} />
     </div>

@@ -18,9 +18,9 @@ export default function RememberRow({
         checked={remember}
         onChange={(e) => setRemember(e.target.checked)}
         disabled={isLoading}
-        className="h-4 w-4 text-accent rounded border-gray-300 focus:ring-accent disabled:opacity-50 bg-accent"
+        className="h-3 w-3 md:h-4 md:w-4 text-accent rounded border-gray-300 focus:ring-accent disabled:opacity-50 bg-accent"
       />
-      <label htmlFor="remember" className="text-sm text-gray-700">
+      <label htmlFor="remember" className="text-xs md:text-base text-gray-700">
         Remember Me
       </label>
     </div>

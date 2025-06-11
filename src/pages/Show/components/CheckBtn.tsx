@@ -10,12 +10,12 @@ export function CheckBtn({
   return (
     <button
       onClick={onCheck}
-      className="mr-2 text-gray-600 hover:text-blue-500"
+      className="mr-2 text-gray-600 hover:text-blue-500 h-4 w-4 md:h-5 md:w-5 cursor-pointer"
     >
       {completed ? (
-        <MdCheckBox size={20} className="text-green-500" />
+        <MdCheckBox className="text-green-500" />
       ) : (
-        <MdCheckBoxOutlineBlank size={20} />
+        <MdCheckBoxOutlineBlank />
       )}
     </button>
   );

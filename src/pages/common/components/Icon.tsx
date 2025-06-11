@@ -11,7 +11,8 @@ export default function Icon({
       data={data}
       onEmojiSelect={handleSelectEmoji}
       previewPosition="none"
-      perLine={9}
+      serchPosition="none"
+      perLine={7}
       maxFrequentRows={0}
     />
   );

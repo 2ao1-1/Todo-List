@@ -12,8 +12,8 @@ export function AddInput({
     <input
       type="text"
       {...registerNewTask("newTaskText", { required: true })}
-      placeholder="Enter task description (Ctrl+N to focus)"
-      className="flex-1 border-b border-accent p-2 focus:outline-none focus:ring-none text-sm"
+      placeholder="Enter task description"
+      className="flex-1 border-b border-accent p-2 focus:outline-none focus:ring-none text-xs md:text-sm"
       onKeyDown={onAddClick}
     />
   );

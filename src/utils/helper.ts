@@ -1,23 +1,25 @@
-// Function to set token in localStorage or sessionStorage based on remember me
+const TOKEN_KEY = "token";
+
+// Set token in localStorage or sessionStorage
 export const setToken = (token: string, remember: boolean): void => {
   if (remember) {
-    localStorage.setItem("token", token);
-    sessionStorage.removeItem("token");
+    localStorage.setItem(TOKEN_KEY, token);
+    sessionStorage.removeItem(TOKEN_KEY);
   } else {
-    localStorage.removeItem("token");
-    sessionStorage.setItem("token", token);
+    localStorage.removeItem(TOKEN_KEY);
+    sessionStorage.setItem(TOKEN_KEY, token);
   }
 };
 
-// Function to get token from localStorage or sessionStorage
+// Get token from either localStorage or sessionStorage
 export const getToken = (): string | null => {
-  return localStorage.getItem("token") || sessionStorage.getItem("token");
+  return localStorage.getItem(TOKEN_KEY) || sessionStorage.getItem(TOKEN_KEY);
 };
 
-// Function to remove token from both storages
+//Remove token from both storages
 export const removeToken = (): void => {
-  localStorage.removeItem("token");
-  sessionStorage.removeItem("token");
+  localStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem(TOKEN_KEY);
 };
 
 // Function to check if user is authenticated

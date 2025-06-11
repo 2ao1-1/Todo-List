@@ -21,7 +21,7 @@ export default function EmailInput<T extends FieldValues>({
       })}
       placeholder="Type your email"
       disabled={isLoading}
-      className="px-2 py-1 bg-main ring-0 outline-none"
+      className="text-sm md:text-base px-2 py-1 bg-main ring-0 outline-none"
     />
   );
 }

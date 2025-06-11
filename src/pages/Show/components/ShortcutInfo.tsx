@@ -1,6 +1,6 @@
 export default function ShortcutInfo() {
   return (
-    <div className="mt-8 p-3 rounded-md text-xs text-primary/80">
+    <div className="hidden md:block bg-main/10 mt-8 p-3 rounded-md text-xs text-primary/80">
       <h3 className="text-sm font-medium mb-1.5 ">Keyboard Shortcuts:</h3>
       <ul className="list-disc list-inside space-y-0.5 md:columns-2">
         <li>Ctrl/Cmd + N: Focus 'Add new task' input</li>

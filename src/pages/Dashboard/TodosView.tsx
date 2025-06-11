@@ -12,12 +12,12 @@ export default function TodosView() {
   if (AllTodos.isError) return <Error message={AllTodos?.error?.message} />;
 
   return (
-    <div className="w-full mx-auto p-4 md:p-6 bg-main min-h-screen">
+    <div className="w-full p-4 md:p-6 bg-main min-h-screen">
       {AllTodos.data?.length === 0 ? (
         <NoTodo />
       ) : (
         <>
-          <div className="absolute bottom-4 right-4 mb-8 text-center z-50 shadow-md">
+          <div className="absolute bottom-4 right-4 mb-8 text-center z-50">
             <NewTodo isOpen={true} type="dashboard" />
           </div>
           <TodoList />

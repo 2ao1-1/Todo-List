@@ -28,7 +28,7 @@ export default function EditTaskInput({
       value={editTaskText}
       onChange={handleOnChange}
       onKeyDown={handleUpdateTaskKey}
-      className="w-full flex-1 p-1 border-b border-accent focus:outline-none"
+      className="w-full flex-1 px-1 md:p-1 border-b border-accent focus:outline-none text-sm md:text-base"
       autoFocus
     />
   );

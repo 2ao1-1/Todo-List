@@ -6,17 +6,17 @@ export default function Register() {
   return (
     <div className="bg-accent min-h-screen flex justify-center items-center p-4">
       <div className="w-full max-w-md bg-white p-4 shadow-2xl overflow-hidden">
-        <div className="px-8 pt-8 pb-6 text-center">
+        <div className="py-4 text-center">
           {/* login head */}
-          <h2 className="text-3xl font-semibold text-gray-800">
+          <h2 className="text-xl md:text-3xl font-semibold text-gray-800">
             Create a new account
           </h2>
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-xs md:text-sm text-gray-500">
             Please fill in the form below
           </p>
         </div>
 
-        <div className="px-8 pb-8">
+        <div className="md:px-8 md:pb-8">
           {/* form body */}
           <Form type="register" />
 

@@ -21,9 +21,9 @@ export default function TaskItem({
     <li
       ref={providedDraggable.innerRef}
       {...providedDraggable.draggableProps}
-      className={`p-3 border-b last:border-b-0 flex items-center transition-all
+      className={`p-2 border-b-0 flex items-center transition-all
       ${completed ? "bg-gray-50" : "bg-white"} 
-      ${selectedTaskIndex === index ? "bg-blue-50 border-blue-300 ring-1 ring-blue-200" : "border-gray-100"} 
+      ${selectedTaskIndex === index ? "bg-accent/5 border-accent/50 ring-1 ring-accent/50" : "border-gray-100"} 
       ${snapshot.isDragging ? "shadow-lg" : ""}`}
       onClick={() => setSelectedTaskIndex(index)}
     >

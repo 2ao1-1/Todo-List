@@ -10,11 +10,11 @@ export const addTask = async (
 };
 
 export const editTask = async (
-  toldId: number,
+  todoId: number,
   taskId: number,
   taskData: { text?: string; completed?: boolean; order?: number }
 ): Promise<Task> => {
-  const res = await api.put(`todos/${toldId}/tasks/${taskId}`, taskData);
+  const res = await api.put(`todos/${todoId}/tasks/${taskId}`, taskData);
   return res.data;
 };
 

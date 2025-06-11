@@ -3,11 +3,10 @@ import { FaTrash } from "react-icons/fa";
 export function ToastDeleteBtn({ onClick }: { onClick: () => void }) {
   return (
     <button
+      className="text-white bg-red-500 hover:bg-red-600 px-4 py-1 rounded flex items-center justify-center gap-4"
       onClick={onClick}
-      title="Delete"
-      className="text-sx px-1 rounded bg-accent/80 text-white hover:bg-accent flex items-center gap-1.5"
     >
-      <span className="text-sm">Delete</span>
+      <span className="text-xs">Delete</span>
       <FaTrash size={16} />
     </button>
   );

@@ -20,10 +20,10 @@ export default function EditHeadControl({
   } = UseEditHeadControl({ todo, setIsEditingTodo });
 
   return (
-    <div className="flex-grow">
+    <div className="flex justify-between items-center">
       <form
         onSubmit={handleSubmitEditTodo(onSubmitEditTodo)}
-        className="flex items-center gap-2"
+        className="flex w-full items-center gap-1 md:gap-2"
       >
         <EditTodoForm
           editTodoIcon={editTodoIcon}

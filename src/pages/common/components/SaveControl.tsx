@@ -9,7 +9,7 @@ export function SaveControl({
   isEditing?: boolean;
 }) {
   return (
-    <div className="flex gap-1 items-center">
+    <div className="flex gap-1 items-center ">
       <SaveBtn isEditing={isEditing} onClick={saveOnClick} />
 
       <CancelBtn />

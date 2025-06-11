@@ -11,7 +11,7 @@ export default function Sidebar({
   return (
     <aside
       className={`${
-        isOpen ? "w-48" : "sm:w-14 hidden"
+        isOpen ? "w-52 absolute inset-0 z-[60]" : "sm:w-14 hidden"
       } bg-main text-primary border-r h-screen transition-all duration-300 flex flex-col sm:block justify-between px-2 z-10`}
     >
       {/* Toggle Button Header */}

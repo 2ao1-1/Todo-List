@@ -8,8 +8,11 @@ interface FormRowProps {
 }
 export default function FormRow({ label, children, error }: FormRowProps) {
   return (
-    <div className="mb-4 grid grid-cols-[6rem_1fr] items-center">
-      <label htmlFor={label} className="block font-medium mb-1">
+    <div className="mb-4 grid grid-cols-1 md:grid-cols-[6rem,1fr] items-center">
+      <label
+        htmlFor={label}
+        className="text-xs md:text-base block font-medium mb-1"
+      >
         {label}
       </label>
       {children}

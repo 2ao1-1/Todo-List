@@ -10,7 +10,7 @@ export default function TodoHead({
   setIsEditingTodo: (value: boolean) => void;
 }) {
   return (
-    <div className="flex justify-between items-center flex-grow">
+    <div className="flex justify-between items-center w-full">
       {/* todo header */}
       <TodoHeadBody todo={todo} />
 

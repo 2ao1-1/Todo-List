@@ -24,7 +24,7 @@ export default function Header({
       <OpenSideBtn toggleSidebar={toggleSidebar} isOpen={isOpen} view="head" />
 
       {/* app name */}
-      <h1 className="text-sm md:text-lg font-bold">🧭 My Dashboard</h1>
+      <h1 className="text-xs md:text-xl font-bold">🧭 My Dashboard</h1>
 
       {/* user badge & user name */}
       <div className="relative">

@@ -12,7 +12,7 @@ export function SaveBtn({
       type="submit"
       disabled={isEditing}
       onClick={onClick}
-      className="p-1.5 bg-accent/80 text-white rounded-full  hover:bg-accent flex items-center gap-1.5 text-sm disabled:opacity-70"
+      className="p-1 md:p-1.5 bg-accent/80 text-white rounded-full  hover:bg-accent flex items-center gap-1.5 text-sm md:text-base disabled:opacity-70"
     >
       <FaSave />
     </button>

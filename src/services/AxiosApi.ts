@@ -27,19 +27,32 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (res) => res,
   (error) => {
-    const { res } = error;
+    const { response } = error;
 
-    if (!res) {
+    if (!response) {
       console.error("Network error. Please check your connection.");
-    } else if (res.status === 401) {
-      console.error("Authentication error. Please login again.");
+    } else {
+      const { status } = response;
 
-      removeToken();
-      window.location.href = "/login";
-    } else if (res.status === 403) {
-      console.error("You don't have permission to perform this action.");
-    } else if (res.status === 500) {
-      console.error("Server error. Please try again later.");
+      switch (status) {
+        case 401:
+          console.warn("⚠️ Unauthorized: Logging out user.");
+          removeToken();
+          window.location.href = "/login";
+          break;
+
+        case 403:
+          console.warn("⛔ Forbidden: You don’t have permission.");
+          break;
+
+        case 500:
+          console.warn("💥 Server Error: Something went wrong on our side.");
+          break;
+
+        default:
+          console.warn(`🚨 Unexpected error (Status: ${status})`);
+          break;
+      }
     }
 
     return Promise.reject(error);

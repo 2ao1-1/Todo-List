@@ -18,7 +18,7 @@ export default function ProgressBar({ todo }: { todo: Todo | undefined }) {
 
 export function CompletedTask({ todo }: { todo: Todo | undefined }) {
   return (
-    <div className="text-center text-sm py-2 text-secondary">
+    <div className="text-center text-xs md:text-sm py-2 text-secondary">
       <span>
         {todo?.tasks.filter((t) => t.completed).length || 0} /{" "}
         {todo?.tasks.length || 0} tasks

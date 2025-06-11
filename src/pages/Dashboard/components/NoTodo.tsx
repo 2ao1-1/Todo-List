@@ -6,10 +6,10 @@ export default function NoTodo() {
       <div className="flex flex-col items-center gap-2">
         <NewTodo isOpen={true} type="dashboard" />
       </div>
-      <h3 className="text-xl font-medium text-gray-500">
+      <h3 className="text-sm md:text-xl font-medium text-gray-500">
         No Todo Lists Yet? Add One Now.
       </h3>
-      <p className="mt-2 text-gray-400">
+      <p className="mt-2 text-gray-400 text-xs md:text-sm">
         Click the button above to create your first todo list!
       </p>
     </div>

@@ -9,7 +9,7 @@
 
   .dot::after {
     content: "";
-    @apply block w-full h-1/4 rounded-full bg-accent;
+    @apply block w-full h-1/4 rounded-full bg-white;
   }
 
   .first {

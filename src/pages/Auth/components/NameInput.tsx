@@ -18,7 +18,7 @@ export default function NameInput({ register, isLoading }: NameInputProps) {
       })}
       placeholder="Type your name"
       disabled={isLoading}
-      className="px-2 py-1 bg-main ring-0 outline-none"
+      className="text-sm px-2 py-1 bg-main ring-0 outline-none"
     />
   );
 }

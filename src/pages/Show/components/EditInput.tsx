@@ -13,7 +13,7 @@ export function EditInput({
       <input
         type="text"
         {...registerEditTodo("editTodoTitle", { required: true })}
-        className="flex-grow border-b border-accent px-2 py-1.5 focus:outline-none focus:ring-none bg-card"
+        className="flex-grow border-b border-accent px-2 py-1.5 focus:outline-none focus:ring-none bg-card text-xs"
         placeholder="Todo list title"
       />
       <input type="hidden" {...registerEditTodo("editTodoIcon")} />

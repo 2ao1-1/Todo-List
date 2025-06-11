@@ -38,7 +38,7 @@ export default function LoginForm() {
         />
       </FormRow>
 
-      <div className="sm:flex justify-between items-center sm:space-x-2 space-y-4 pt-4">
+      <div className="text-sm md:text-base sm:flex justify-between items-center sm:space-x-2 space-y-4 pt-4">
         <RememberRow
           isLoading={isLoading}
           remember={remember}
