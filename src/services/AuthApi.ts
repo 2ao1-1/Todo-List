@@ -21,7 +21,7 @@ function handleError(err: unknown): never {
       throw new Error(err.response?.data?.message || "Invalid request data");
     }
 
-    if (err.response?.status >= 500) {
+    if (err.response?.status === 500) {
       throw new Error("Server error. Please try again later.");
     }
 
