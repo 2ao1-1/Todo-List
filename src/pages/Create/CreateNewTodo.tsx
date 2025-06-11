@@ -7,7 +7,7 @@ export default function CreateNewTodo() {
 
   return (
     <div
-      className="absolute top-0 inset-0 bg-secondary/50 flex justify-center items-center overflow-hidden z-50"
+      className="absolute top-0 inset-0 bg-secondary/50 flex justify-center items-center overflow-hidden z-[200] p-2"
       onClick={handleClose}
     >
       <div

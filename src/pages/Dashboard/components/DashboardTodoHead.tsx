@@ -3,7 +3,7 @@ import { Todo } from "../../common/types";
 
 export default function DashboardTodoHead({ todo }: { todo: Todo }) {
   return (
-    <div className="flex items-center justify-between mb-6 pt-4">
+    <div className="flex items-center justify-between mb-6 pt-4 relative">
       <HeadBody icon={todo.icon} title={todo.title} />
 
       <DeleteBtn id={todo.id} title={todo.title} />

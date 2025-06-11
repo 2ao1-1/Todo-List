@@ -8,7 +8,7 @@ export default function LogoutBtn({
   logout: () => void;
 }) {
   return (
-    <div className="absolute right-0 mt-2 w-40 bg-white border shadow-lg p-2 flex gap-2 items-center">
+    <div className="absolute right-0 mt-2 w-40 bg-white border shadow-lg p-2 flex gap-2 items-center z-50">
       {/* logout btn */}
       <button
         onClick={logout}

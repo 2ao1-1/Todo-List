@@ -14,7 +14,7 @@ export function DeleteBtn({ id, title }: { id: number; title: string }) {
     <button
       onClick={onDelete}
       title="Delete"
-      className="text-gray-400 hover:text-red-500 p-1 rounded-full hover:bg-red-100 transition-colors duration-150"
+      className="text-gray-400 hover:text-red-500 p-1 rounded-full hover:bg-red-100 transition-colors duration-150 relative z-40"
       aria-label="Delete todo"
     >
       <FaTrash size={16} />

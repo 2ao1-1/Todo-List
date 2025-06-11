@@ -27,7 +27,7 @@ export default function Header({
       <h1 className="text-xs md:text-xl font-bold">🧭 My Dashboard</h1>
 
       {/* user badge & user name */}
-      <div className="relative">
+      <div className="relative ">
         <UserBadge handleUserbadge={handleUserbadge} userName={user?.name} />
 
         {openBadge && (
