@@ -36,12 +36,14 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
+            docker pull ***/todolist:latest
+            docker stop todo-list-todolist-1 || true
+            docker rm todo-list-todolist-1 || true
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
-            docker stop mytodoapp || true
-            docker rm mytodoapp || true
             docker run -d \
               --restart unless-stopped \
               --env-file /root/Ahmed-Omran/todolistapp/Todo-List/.env \
-              --name mytodoapp \
+              --name todo-list-todolist-1 \
               -p 3040:80 \
               ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
+            docker image prune -f
