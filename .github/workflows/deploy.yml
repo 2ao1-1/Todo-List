@@ -39,4 +39,9 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
             docker stop mytodoapp || true
             docker rm mytodoapp || true
-            docker run -d --restart unless-stopped --name mytodoapp -p 3040:80 ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
+            docker run -d \
+              --restart unless-stopped \
+              --env-file /root/Ahmed-Omran/todolistapp/.env \
+              --name mytodoapp \
+              -p 3040:80 \
+              ${{ secrets.DOCKERHUB_USERNAME }}/todolist:latest
