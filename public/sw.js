@@ -1,10 +1,10 @@
-const CACHE_NAME = "todo-app-v1";
-const urlsToCache = [
-  "/",
-  "/static/js/bundle.js",
-  "/static/css/main.css",
-  "/manifest.json",
-];
+// const CACHE_NAME = "todo-app-v1";
+// const urlsToCache = [
+//   "/",
+//   "/static/js/bundle.js",
+//   "/static/css/main.css",
+//   "/manifest.json",
+// ];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
@@ -14,10 +14,10 @@ self.addEventListener("install", (e) => {
   );
 });
 
-self.addEventListener("fetch", (e) => {
-  e.respondWith(
-    caches.match(e.request).then((response) => {
-      return response || fetch(e.request);
-    })
-  );
-});
+// self.addEventListener("fetch", (e) => {
+//   e.respondWith(
+//     caches.match(e.request).then((response) => {
+//       return response || fetch(e.request);
+//     })
+//   );
+// });
