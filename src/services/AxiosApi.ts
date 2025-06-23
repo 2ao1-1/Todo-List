@@ -1,7 +1,8 @@
 import axios from "axios";
 import { getToken, removeToken } from "../utils/helper";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/api`;
+// const API_URL = `${import.meta.env.VITE_API_URL}/api`;
+const API_URL = "https://todo-list-api.2ao1.space/api";
 
 export const api = axios.create({
   baseURL: API_URL,

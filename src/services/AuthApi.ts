@@ -7,7 +7,8 @@ import {
 } from "../pages/Auth/types/AuthTypes";
 import { getToken, removeToken, setToken } from "../utils/helper";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/api`;
+// const API_URL = `${import.meta.env.VITE_API_URL}/api`
+const API_URL = "https://todo-list-api.2ao1.space/api";
 
 function handleError(err: unknown): never {
   if (axios.isAxiosError(err)) {
