@@ -123,7 +123,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// 3- context hook: Helper Hook to use the authentication context
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {
