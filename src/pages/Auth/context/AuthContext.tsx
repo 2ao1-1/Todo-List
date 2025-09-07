@@ -5,13 +5,16 @@ import {
   useEffect,
   useState,
 } from "react";
+
 import {
   AuthContextType,
   LoginRequest,
   RegisterRequest,
 } from "../types/AuthTypes";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
 import {
   getUserProfile,
   loginUser,
@@ -21,10 +24,8 @@ import {
 import { isAuthenticated } from "../../../utils/helper";
 import toast from "react-hot-toast";
 
-// 1- create context
 const AuthContext = createContext<AuthContextType | null>(null);
 
-// 2- context Provider
 export function AuthProvider({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const location = useLocation();
