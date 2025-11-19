@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
-import toast from "react-hot-toast";
 
 export interface LoginFormData {
   email: string;
@@ -19,19 +18,13 @@ export default function useLogin() {
     formState: { errors },
   } = useForm<LoginFormData>();
 
-  const { login, isLoading, error, isAuthenticated } = useAuth();
+  const { login, isLoading, isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/app");
     }
   }, [isAuthenticated, navigate]);
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-    }
-  }, [error]);
 
   const onSubmit = (data: LoginFormData) => {
     login(data.email, data.password, remember);

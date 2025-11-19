@@ -7,11 +7,12 @@ import {
 } from "../pages/Auth/types/AuthTypes";
 import { getToken, removeToken, setToken } from "../utils/helper";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/api`;
+const API_URL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : "http://localhost:5000/api";
 
 function handleError(err: unknown): never {
   if (axios.isAxiosError(err)) {
-    // Handle different HTTP status codes
     if (err.response?.status === 401) {
       removeToken();
       throw new Error("Authentication failed. Please login again.");
@@ -28,7 +29,6 @@ function handleError(err: unknown): never {
     throw new Error(err.response?.data?.message || "Request failed");
   }
 
-  // Handle network errors or other unknown errors
   if (err instanceof Error) {
     throw err;
   }
@@ -42,7 +42,6 @@ export const registerUser = async (
   try {
     const res = await axios.post(`${API_URL}/auth/register`, data);
 
-    // Save new token based on remember preference
     setToken(res.data.token, data.remember);
     return res.data;
   } catch (err) {
@@ -54,7 +53,6 @@ export const loginUser = async (data: LoginRequest): Promise<AuthResponse> => {
   try {
     const res = await axios.post(`${API_URL}/auth/login`, data);
 
-    // Save new token based on remember preference
     setToken(res.data.token, data.remember);
     return res.data;
   } catch (err) {

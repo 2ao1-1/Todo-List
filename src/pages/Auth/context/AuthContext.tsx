@@ -5,16 +5,13 @@ import {
   useEffect,
   useState,
 } from "react";
-
 import {
   AuthContextType,
   LoginRequest,
   RegisterRequest,
 } from "../types/AuthTypes";
-
 import { useLocation, useNavigate } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-
 import {
   getUserProfile,
   loginUser,
@@ -58,7 +55,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
     onError: (error: Error) => {
       setError(error.message);
-      toast.error(`Login failed: ${error.message}`);
     },
   });
 
@@ -76,7 +72,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
     onError: (error: Error) => {
       setError(error.message);
-      toast.error(`Registration failed: ${error.message}`);
     },
   });
 
