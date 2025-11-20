@@ -3,7 +3,9 @@ import { api } from "./AxiosApi";
 
 export const getTodos = async (): Promise<Todo[]> => {
   const res = await api.get("todos");
-  return res.data;
+  // Handle both array response and { data: [...] } response
+  const data = Array.isArray(res.data) ? res.data : res.data?.data || [];
+  return data;
 };
 
 export const getTodoByID = async (todoId: number): Promise<Todo> => {

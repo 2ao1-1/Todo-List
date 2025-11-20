@@ -7,9 +7,8 @@ import {
 } from "../pages/Auth/types/AuthTypes";
 import { getToken, removeToken, setToken } from "../utils/helper";
 
-const API_URL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : "http://localhost:5000/api";
+const API_URL =
+  import.meta.env.VITE_API_URL || "https://todolistapi-2ao1.runasp.net";
 
 function handleError(err: unknown): never {
   if (axios.isAxiosError(err)) {
@@ -40,7 +39,7 @@ export const registerUser = async (
   data: RegisterRequest
 ): Promise<AuthResponse> => {
   try {
-    const res = await axios.post(`${API_URL}/auth/register`, data);
+    const res = await axios.post(`${API_URL}/api/auth/register`, data);
 
     setToken(res.data.token, data.remember);
     return res.data;
@@ -51,7 +50,7 @@ export const registerUser = async (
 
 export const loginUser = async (data: LoginRequest): Promise<AuthResponse> => {
   try {
-    const res = await axios.post(`${API_URL}/auth/login`, data);
+    const res = await axios.post(`${API_URL}/api/auth/login`, data);
 
     setToken(res.data.token, data.remember);
     return res.data;
@@ -68,7 +67,7 @@ export const getUserProfile = async (): Promise<UserProfile> => {
   }
 
   try {
-    const res = await axios.get<UserProfile>(`${API_URL}/auth/profile`, {
+    const res = await axios.get<UserProfile>(`${API_URL}/api/auth/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

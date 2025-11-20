@@ -1,12 +1,11 @@
 import axios from "axios";
 import { getToken, removeToken } from "../utils/helper";
 
-const API_URL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : "http://localhost:5000/api";
+const API_URL =
+  import.meta.env.VITE_API_URL || "https://todolistapi-2ao1.runasp.net";
 
 export const api = axios.create({
-  baseURL: API_URL,
+  baseURL: `${API_URL}/api`,
   headers: {
     "Content-Type": "application/json",
   },

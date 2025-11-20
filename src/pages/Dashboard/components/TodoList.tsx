@@ -9,9 +9,14 @@ import ProgressBar from "../../common/components/ProgressBar";
 export default function TodoList() {
   const { AllTodos } = useTodos();
 
+  if (AllTodos.isLoading) return <div>Loading...</div>;
+  if (AllTodos.isError) return <div>Error loading todos</div>;
+
+  const todos = Array.isArray(AllTodos.data) ? AllTodos.data : [];
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {AllTodos.data?.map((todo: Todo) => (
+      {todos.map((todo: Todo) => (
         <Link
           key={todo.id}
           to={`/app/${todo.id}`}
